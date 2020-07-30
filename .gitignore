@@ -1,5 +1,6 @@
 # Ignore Everything
 *
+*.out
 
 # But not .cpp
 !*.cpp
