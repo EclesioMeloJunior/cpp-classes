@@ -21,7 +21,7 @@ class OrderedIntList {
       if (m_size == 0)
         insert(0, v);
       else {
-        size_t pos = find_order(v);
+        size_t pos = linear_find_order(v);
         replace_and_insert(pos, v);
       }
     }
@@ -54,11 +54,13 @@ class OrderedIntList {
       m_capacity = capacity;
     }
 
+    //O(1);
     void insert(size_t pos, int v) {
       *(m_data + pos) = v;
       m_size++;
     }
 
+    //O(n)
     void replace_and_insert(size_t limit, int v) {
       for (size_t i = m_size; i > limit; i--) {
         *(m_data + i) = *(m_data + i - 1);
@@ -67,7 +69,8 @@ class OrderedIntList {
       insert(limit, v);
     }
 
-    size_t find_order(int v) {
+    //O(n)
+    size_t linear_find_order(int v) {
       size_t pos = m_size;
 
       for (size_t i = 0; i < m_size; i++) {
